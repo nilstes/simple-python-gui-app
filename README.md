@@ -1,8 +1,11 @@
 # simple-python-gui-app
 
 Dette er en enkel Python-applikasjon som bruker
-* tkinter for å lage et enkelt gui
-* pymysql for å kontakte en enkel database
+* *tkinter* for å lage et enkelt gui
+* *pymysql* for å kontakte en enkel database
+* *matplotlib* for å lage et enkelt histogram
+
+Applikasjonen er ikke objektorientert
 
 Databasen kan opprettes med følgende skript:
 
