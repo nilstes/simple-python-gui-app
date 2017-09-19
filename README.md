@@ -13,22 +13,17 @@ Databasen kan opprettes med følgende skript:
 CREATE TABLE IF NOT EXISTS `person` (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `navn` varchar(256) NOT NULL,
+    `alder` int(3) NULL,
     `adresse` varchar(256) NOT NULL,
+    `bilde_base64` longtext NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
 
-INSERT INTO `person` (`id`, `navn`, `adresse`) VALUES
-    (1, 'Nils Tesdal', 'Byen'),
-    (2, 'Hei Sveisen', 'Byen'),
-    (3, 'Bjørn Bjørnsen', 'Skogen');
-    
-CREATE TABLE IF NOT EXISTS `bilde` (
-    `id` int(11) NOT NULL,
-    `bilde_base64` longtext NOT NULL,
-    PRIMARY KEY (`id`),
-    UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
+INSERT INTO `person` (`navn`, `adresse`, `alder`) VALUES
+    ('Super Supersen', 'Byen', 50),
+    ('Hei Sveisen', 'Byen', 43),
+    ('Bjørn Bjørnsen', 'Skogen', 21);
 ```
 Brukernavn og passord til databasen må settes øverst i *person_db.py*.
 
