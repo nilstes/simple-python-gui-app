@@ -3,16 +3,20 @@ import person_edit
 import person_db
 import person_statistics
 
+result = []
+
 # Definerer aksjon for søket
 def search():
     result_listbox.delete(0, END)
-    result = person_db.search(name.get(), address.get())
-    for element in result: 
+    result.clear()
+    db_result = person_db.search(name.get(), address.get())
+    for element in db_result:
+        result.append(element)
         result_listbox.insert(END, element[1])
        
 # Definerer aksjon for menyvalget "Ny Person"
 def new_person():
-    result_listbox.insert(END, "Ny Person" + str(result_listbox.size()+1))
+    person_edit.open_edit(root)
 
 # Definerer aksjon for menyvalget "Vis statistikk"
 def view_statistics():
@@ -21,7 +25,7 @@ def view_statistics():
 
 # Definerer aksjon for dobbeltklikk på en person i lista
 def edit_person(event):
-    person_edit.open_edit(root)
+    person_edit.open_edit(root, result[result_listbox.curselection()[0]])
 
 # Opprett hovedvindu
 root = Tk()
