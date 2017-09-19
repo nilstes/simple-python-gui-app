@@ -3,9 +3,10 @@ import person_edit
 import person_db
 import person_statistics
 
+# Oppretter liste for søkeresultatet
 result = []
 
-# Definerer aksjon for søket
+# Definerer aksjon for personsøket
 def search():
     result_listbox.delete(0, END)
     result.clear()
@@ -16,16 +17,21 @@ def search():
        
 # Definerer aksjon for menyvalget "Ny Person"
 def new_person():
-    person_edit.open_edit(root)
+    person_edit.open_edit(root, search)
 
-# Definerer aksjon for menyvalget "Vis statistikk"
-def view_statistics():
+# Definerer aksjon for menyvalget "Vis aldersdistribusjon"
+def view_address_statistics():
     counts, adresses = person_db.get_adress_counts()
-    person_statistics.show_histogram(counts, adresses, "Adresse", "Antall")
+    person_statistics.show_bar_chart(counts, adresses, "Adresse", "Antall")
+
+# Definerer aksjon for menyvalget "Vis aldersdistribusjon"
+def view_age_statistics():
+    ages = person_db.get_ages()
+    person_statistics.show_histogram(ages, 0, 120, 24, "Alder", "Antall")
 
 # Definerer aksjon for dobbeltklikk på en person i lista
 def edit_person(event):
-    person_edit.open_edit(root, result[result_listbox.curselection()[0]])
+    person_edit.open_edit(root, search, result[result_listbox.curselection()[0]])
 
 # Opprett hovedvindu
 root = Tk()
@@ -60,11 +66,17 @@ scrollbar.grid(column=5, row=1, rowspan=10, sticky=NS)
 
 # Lag meny
 menubar = Menu(root)
-menu = Menu(menubar, tearoff=0)
-menu.add_command(label="Registrer ny person", command=new_person)
-menu.add_command(label="Se statistikk", command=view_statistics)
-menubar.add_cascade(label="Meny", menu=menu)
+personMenu = Menu(menubar, tearoff=0)
+personMenu.add_command(label="Registrer ny", command=new_person)
+statisticsMenu = Menu(menubar, tearoff=0)
+statisticsMenu.add_command(label="Se adressedistribusjon", command=view_address_statistics)
+statisticsMenu.add_command(label="Se aldersdistribusjon", command=view_age_statistics)
+menubar.add_cascade(label="Person", menu=personMenu)
+menubar.add_cascade(label="Statistikk", menu=statisticsMenu)
 root.config(menu=menubar)
+
+# Søk på data for å fylle listen
+search()
 
 # Starter GUI'et
 root.mainloop()
