@@ -1,6 +1,6 @@
 # simple-python-gui-app
 
-Dette er en enkel Python-applikasjon som bruker
+Dette er en enkel Python-applikasjon som bruker bibliotekene
 * *tkinter* for å lage et enkelt gui
 * *pymysql* for å kontakte en enkel database
 * *matplotlib* for å lage et enkelt histogram
@@ -24,7 +24,7 @@ INSERT INTO `person` (`id`, `navn`, `adresse`) VALUES
     (3, 'Bjørn Bjørnsen', 'Skogen');
     
 CREATE TABLE IF NOT EXISTS `bilde` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `id` int(11) NOT NULL,
     `bilde_base64` longtext NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `id` (`id`)
@@ -32,4 +32,4 @@ CREATE TABLE IF NOT EXISTS `bilde` (
 ```
 Brukernavn og passord til databasen må settes øverst i *person_db.py*.
 
-Kjør *person_main.py* for å kjøre applikasjonen.
+Kjør *person_main.py* for å starte applikasjonen.
