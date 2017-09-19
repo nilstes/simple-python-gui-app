@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `bilde` (
     `bilde_base64` longtext NOT NULL,
     PRIMARY KEY (`id`),
     UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;
 ```
 Brukernavn og passord til databasen må settes øverst i *person_db.py*.
 
