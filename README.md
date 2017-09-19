@@ -22,4 +22,14 @@ INSERT INTO `person` (`id`, `navn`, `adresse`) VALUES
     (1, 'Nils Tesdal', 'Byen'),
     (2, 'Hei Sveisen', 'Byen'),
     (3, 'Bjørn Bjørnsen', 'Skogen');
+    
+CREATE TABLE IF NOT EXISTS `bilde` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `bilde_base64` longtext NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4;
 ```
+Brukernavn og passord til databasen må settes øverst i *person_db.py*.
+
+Kjør *person_main.py* for å kjøre applikasjonen.
