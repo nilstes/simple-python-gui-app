@@ -15,7 +15,7 @@ def search():
         result.append(element)
         result_listbox.insert(END, element[1])
        
-# Definerer aksjon for menyvalget "Ny Person"
+# Definerer aksjon for menyvalget "Opprett Ny Person"
 def new_person():
     person_edit.open_edit(root, search)
 

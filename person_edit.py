@@ -41,8 +41,8 @@ def open_edit(root, search, person_data=None): # Hvis person_data ikke sendes in
     # Oppretter et nytt vindu for å editere personinfo
     window = Toplevel(root)
 
-    # Logg inndata
-    print(person_data)
+    # Logger inndata
+    print("open_edit: data=" + str(person_data))
 
     # Vi lager Var-variabler for å holde orden på endringer brukeren gjør i GUI'et
     id = StringVar()
